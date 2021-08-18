@@ -1,0 +1,15 @@
+doctype html
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(http-equiv="X-UA-Compatible", content="IE=edge")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        style
+            include ../public/css/style.css
+            include ../public/css/menu.css
+        title Message
+    body
+        include ./menu.pug
+        #message
+            p=message
+            button(onclick=href autofocus) Go Back

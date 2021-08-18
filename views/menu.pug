@@ -1,0 +1,19 @@
+nav(role='navigation')
+  #menuToggle
+    input(type='checkbox')
+    span
+    span
+    span
+    ul#menu
+        form(action="/dashboard", method="get")
+            li
+                input(type="submit", value="Dashboard")
+        form(action="/search", method="get")
+            li
+                input(type="submit", value="Search")
+        form(action="/movies", method="get")
+            li
+                input(type="submit", value="Movies")
+        form(action="/logout", method="post")
+            li
+                input(type="submit", value="LogOut")

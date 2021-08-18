@@ -18,10 +18,16 @@
   },
   "homepage": "https://github.com/manuelmartin-developer/MovieApp#readme",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cookie-parser": "^1.4.5",
+    "cors": "^2.8.5",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "method-override": "^3.0.0",
     "mongodb": "^4.1.0",
     "mongoose": "^5.13.7",
+    "mongoose-serial": "^1.0.4",
     "pug": "^3.0.2"
   }
 }
