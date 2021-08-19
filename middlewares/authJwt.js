@@ -60,14 +60,15 @@ isAdmin = (req, res, next) => {
             return;
           }
         }
+        const email = req.body.email
+        User.findOne({email:email}).exec((err, user) => {
 
-        const message = `This panel requires administrator privileges`
-        const href = "window.history.back()";
-        res.status(201).render('message', {
-          message,
-          href
-        });
-        return;
+          res.status(201).render('userdashboard', {
+              user
+          });
+          return;
+        })
+      
       }
     );
   });

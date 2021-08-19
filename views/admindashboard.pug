@@ -7,8 +7,7 @@ html(lang="en")
         style
             include ../public/css/style.css
             include ../public/css/menu.css
-        title Message
+        title Dashboard
     body
-        #message
-            p=message
-            button(onclick=href autofocus) Go Back
+        include ./menuadmin.pug
+        p=user[0].email

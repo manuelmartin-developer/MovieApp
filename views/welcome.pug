@@ -7,8 +7,9 @@ html(lang="en")
         style
             include ../public/css/style.css
             include ../public/css/menu.css
-        title Message
+        title Welcome
     body
-        #message
-            p=message
-            button(onclick=href autofocus) Go Back
+        p=`Welcome ${user.name}!!!`
+        form(action="/auth/dashboard", method="post")
+            input(type="hidden", name="email" value=user.email)
+            input(type="submit", value="Dashboard")

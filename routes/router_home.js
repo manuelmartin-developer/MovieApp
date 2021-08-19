@@ -9,9 +9,7 @@ const { verifyToken, isAdmin } = require('../middlewares/authJwt');
 router.get('', home.home);
 router.get('/signup', home.signup);
 router.post('/signup', checkDuplicateEmailOrNickname, checkRolesExisted, users.register);
-router.post('/login',checkEmailAndPassword, verifyToken, isAdmin, home.login);
+router.post('/login',checkEmailAndPassword, users.signin);
 
-
-// router.post('/logout', home.logout);
 
 module.exports = router;

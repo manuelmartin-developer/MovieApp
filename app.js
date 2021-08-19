@@ -1,11 +1,22 @@
 const express = require('express');
 require('dotenv').config();
-const router_home = require('./routes/router_home')
-const router_auth = require('./routes/router_auth')
+const cors = require("cors");
+const cookieParser = require('cookie-parser');
+const router_home = require('./routes/router_home');
+const router_auth = require('./routes/router_auth');
 
 
 const app = express();
 const port = process.env.PORT;
+
+const corsOptions = {
+  origin: [
+  "http://localhost:process.env.PORT"
+    ]
+};
+
+app.use(cors(corsOptions));
+app.use(cookieParser());
 
 //View engine
 app.set('view engine', 'pug');
