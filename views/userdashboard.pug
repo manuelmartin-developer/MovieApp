@@ -13,9 +13,18 @@ html(lang="en")
     body
         include ./menuuser.pug
         #container_userdashboard
-            form(action="/auth/search", method="get" autocomplete="off")
-                button(type="submit")
-                    i(class="fas fa-search")
-            form(action="/auth/movies", method="get" autocomplete="off")
-                button(type="submit")
-                    i(class="fas fa-film")
+            #search_userdashboard
+                p Search movies
+                form(action="/auth/search", method="get" autocomplete="off")
+                    button(type="submit")
+                        i(class="fas fa-search")
+            #movies_userdashboard
+                p My movies
+                form(action="/auth/movies", method="get" autocomplete="off")
+                    button(type="submit")
+                        i(class="fas fa-film")
+            #logout_userdashboard 
+                p Log out
+                form(action="/auth/logout", method="post")
+                    button(type="submit")
+                        i(class="fas fa-sign-out-alt")
