@@ -1,0 +1,95 @@
+doctype html
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(http-equiv="X-UA-Compatible", content="IE=edge")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        link(rel='icon' href='/public/assets/favicon.ico')
+        script(src="https://kit.fontawesome.com/a5b1eae3e6.js" crossorigin="anonymous") 
+        style
+            include ../public/css/style.css
+            include ../public/css/menu.css
+        title Search
+    body
+        include ./menuuser.pug
+        #container_search
+            form(action="/auth/search", method="get" autocomplete="off")
+                #container_input_search
+                    input(type="text", name="title")
+                    button(type="submit")
+                            i(class="fas fa-search")
+            if films && title !== undefined && lengthMovies <= 10
+                p 
+                    |There are
+                    span=` ${films.totalResults} `
+                    |movies in your search
+                #list_movies
+                    each film in films.Search
+                        #one_movie
+                            #film_title=film.Title
+                            #img_buttons
+                                if film.Poster && film.Poster !== 'N/A'
+                                    img(src=film.Poster, alt="film image")
+                                else 
+                                    img(src='../public/assets/no_image.png', alt="film image")
+                                #buttons
+                                    form(action="/auth/search", method="post")
+                                        input(type="hidden", name="Title" value=film.Title)
+                                        button(type="submit")
+                                            i(class="fas fa-info-circle")
+                                    form(action="/auth/movies", method="post")
+                                        input(type="hidden", name="Title" value=film.Title)
+                                        button(type="submit")
+                                            i(class="fas fa-plus-square")             
+            else if films && title !== undefined && lengthMovies > 10
+                p 
+                    |There are
+                    span=` ${films[0].totalResults} `
+                    |movies in your search
+                #list_movies
+                    each movie in films
+                        each film in movie.Search
+                            #one_movie
+                                #film_title=film.Title
+                                #img_buttons
+                                    if film.Poster && film.Poster !== 'N/A'
+                                        img(src=film.Poster, alt="film image")
+                                    else 
+                                        img(src='../public/assets/no_image.png', alt="film image")
+                                    #buttons
+                                        form(action="/auth/search", method="post")
+                                            input(type="hidden", name="Title" value=film.Title)
+                                            button(type="submit")
+                                                i(class="fas fa-info-circle")
+                                        form(action="/auth/movies", method="post")
+                                            input(type="hidden", name="Title" value=film.Title)
+                                            button(type="submit")
+                                                i(class="fas fa-plus-square")
+            else if films && title !== undefined
+                p 
+                    |There are
+                    span 1
+                    |movies in your search
+                #list_movies
+                    
+                        #one_movie
+                            #film_title=films.Title
+                            #img_buttons
+                                if films.Poster && films.Poster !== 'N/A'
+                                    img(src=films.Poster, alt="film image")
+                                else 
+                                    img(src='../public/assets/no_image.png', alt="film image")
+                                #buttons
+                                    form(action="/auth/search", method="post")
+                                        input(type="hidden", name="Title" value=films.Title)
+                                        button(type="submit")
+                                            i(class="fas fa-info-circle")
+                                    form(action="/auth/movies", method="post")
+                                        input(type="hidden", name="Title" value=films.Title)
+                                        button(type="submit")
+                                            i(class="fas fa-plus-square") 
+                            
+                                
+        
+            else if !films
+                p=notFound

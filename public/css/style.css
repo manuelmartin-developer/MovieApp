@@ -2,6 +2,7 @@
 	padding: 0;
 	margin: 0;
 	font-family: monospace;
+	font-size: 1em;
 }
 body{
 	width: 100%;
@@ -19,9 +20,26 @@ input[type=number],input[type=mail], input[list], input[type=date], input[type=t
 	margin-bottom: 10px;
 	color: rgba(193,193,193,1.00);
 }
-input[type=number]:focus, input[list]:focus, input[type=date]:focus, input[type=text]:focus, input[type=password]:focus{
+input[type=number]:focus, input[list]:focus, input[type=date]:focus, input[type=text]:focus, input[type=password]:focus, input[type=mail]:focus{
 
 	border-color: tomato;
+}
+
+/* MESSAGE */
+#message{
+	color: rgba(193,193,193,1.00);
+	height: 50vh;
+	text-align: justify;
+	margin: 0 10px;
+	vertical-align: middle;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	font-size: 1.5rem;
+}
+#message>p{
+	margin-bottom: 40px;
 }
 
 /* REGISTER */
@@ -31,7 +49,7 @@ input[type=number]:focus, input[list]:focus, input[type=date]:focus, input[type=
 	text-align: center;
 	margin: 60px 10px 0 10px  ;
 	color: rgba(193,193,193,1.00);
-
+	
 }
 #register_form> label, #register_form>input, #pass_container{
 	margin-bottom: 20px;
@@ -51,8 +69,19 @@ input[type=number]:focus, input[list]:focus, input[type=date]:focus, input[type=
 }
 #signup_message{
 	text-align: center;
-	margin: 40px 10px 10px 0;
+	margin: 20px 10px 10px 0;
 }
+input[type=button]{
+	width: 100%;
+	margin-right: 10px;
+
+	
+}
+span{
+	font-weight: bold;
+	color: tomato;
+}
+
 /* SIGN IN */
 #signin_form{
 	display: flex;
@@ -74,8 +103,285 @@ input[type=number]:focus, input[list]:focus, input[type=date]:focus, input[type=
 	text-align: center;
 	color: rgba(193,193,193,1.00);
 	margin: 0 10px 0 10px  ;
-
+	
 }
 #signup_form>input[type="submit"]{
 	margin-top: 30px;
+}
+#logo{
+	display: flex;
+	justify-content: center;
+	margin-top: 60px;
+}
+
+/* DASHBOARD */
+
+#container_userdashboard{
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	margin-top: 80px;
+}
+#container_userdashboard>form>button{
+	background-color: transparent;
+	border: none;
+	color: rgba(193,193,193,1.00);
+	font-size: 6rem;
+	transition: color 0.3s ease;
+	
+}
+#container_userdashboard>form>button:hover{
+	transition: color 0.3s ease;
+	color: tomato;
+}
+#container_admindashboard{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	margin: 80px 10px 0 10px;
+	
+}
+#container_admindashboard>form{
+	border-bottom: 1px solid rgba(193,193,193,0.5);
+
+}
+#container_admindashboard>form>input[type=submit]{
+	width: 60vw;
+	margin-bottom: 10px;
+	
+}
+/* SEARCH */
+#container_search{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin-top: 80px;
+}
+#container_input_search{
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+
+}
+#container_input_search>button{
+	background-color: transparent;
+	border: none;
+	color: rgba(193,193,193,1.00);
+	transition: color 0.3s ease;
+}
+#container_input_search>button:hover{
+	transition: color 0.3s ease;
+	color: tomato;
+}
+#list_movies{
+	display: flex;
+	flex-direction: row;
+	align-items: flex-start;
+	justify-content: center;
+	flex-wrap: wrap;
+	width: 100%;
+	margin-top: 20px;
+
+}
+#one_movie{
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+	width: 150px;
+	height: 150px;
+	margin: 5px 5px;
+
+}
+#film_title{
+	display: flex;
+	justify-content: center;
+	align-items: flex-start;
+	height: 30px;
+	overflow: auto;
+	margin-bottom: 10px;
+
+}
+#img_buttons>img{
+	width: 100px;
+	height: 100px;
+	object-fit: scale-down;
+}
+#img_buttons{
+	display: flex;
+	flex-direction: row;
+	align-items:flex-end;
+	justify-content: center;
+
+
+}
+#buttons{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+#buttons>form>button{
+	background-color: transparent;
+	border: none;
+	color: rgba(193,193,193,1.00);
+	transition: color 0.3s ease;
+	margin-bottom: 5px;
+}
+#buttons>form>button:hover{
+	transition: color 0.3s ease;
+	color: tomato;
+}
+/* FILM DETAILS */
+
+#film_details{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	margin: 60px 0px 20px 0px;
+}
+#film_detail_title{
+	font-size: 1.2rem;
+	font-weight: bold;
+	margin: 0px 20px 20px 20px;
+}
+#film_detail_table{
+	width: 95%;
+	margin: 10px;
+	
+}
+table,th, td{
+	border-collapse: collapse;
+	border: 1px solid rgba(193,193,193,0.5);
+}
+th{
+	text-align: left;
+	color: tomato;
+}
+td, th{
+	padding: 2px;
+}
+#center{
+	text-align: center;
+}
+/* MY MOVIES */
+
+#container_mymovies{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin: 80px 10px 0 10px;
+}
+#result_mymovies{
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	margin-top: 30px;
+	width: 100%;
+}
+.one_mymovie{
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	width: 100%;
+	margin-bottom: 10px;
+	border-bottom: 1px solid rgba(193,193,193,0.5);
+}
+#mymovie_title{
+	width: 70%;
+	margin-left: 10px;
+}
+#buttons_mymovies{
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-end;
+}
+#buttons_mymovies>form>button{
+	background-color: transparent;
+	border: none;
+	color: rgba(193,193,193,1.00);
+	transition: color 0.3s ease;
+	margin-left: 10px;
+}
+#buttons_mymovies>form>button:hover{
+	transition: color 0.3s ease;
+	color: tomato;
+}
+/* CREATE MOVIE */
+#container_create_movie{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin: 80px 10px 0 10px;
+}
+#buttons_createmovie{
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-end;
+}
+#buttons_createmovie>form>button{
+	background-color: transparent;
+	border: none;
+	color: rgba(193,193,193,1.00);
+	transition: color 0.3s ease;
+	margin-left: 10px;
+}
+#buttons_createmovie>form>button:hover{
+	transition: color 0.3s ease;
+	color: tomato;
+}
+#container_create_movie>form{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 100%;
+}
+#list_create_movies{
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+}
+#create_title{
+	width: 70%;
+	margin-left: 10px;
+}
+.one_createmovie{
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	width: 100%;
+	margin-bottom: 10px;
+	border-bottom: 1px solid rgba(193,193,193,0.5);
+}
+/* CONFIRM */
+#container_confirm{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin: 80px 10px 0 10px;
+}
+#confirm_buttons{
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	width: 100%;
+	margin-top: 20px;
+}
+#confirm_buttons>form>button, #confirm_buttons>button{
+	background-color: transparent;
+	border: none;
+	color: rgba(193,193,193,1.00);
+	transition: color 0.3s ease;
+	margin-left: 10px;
+	font-size: 3rem;
+}
+#accept:hover{
+	transition: color 0.3s ease;
+	color: green;
+}
+#reject:hover{
+	transition: color 0.3s ease;
+	color: tomato;
 }

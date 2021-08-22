@@ -26,7 +26,10 @@ const usersSchema = new mongoose.Schema({
           type: mongoose.Schema.Types.ObjectId,
           ref: "Role"
         }
-      ]
+      ],
+    mymovies: {
+        type: Array
+    }
 });
 
 let Invoice = connection.model('User', usersSchema, 'Users');

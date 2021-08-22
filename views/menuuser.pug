@@ -5,13 +5,13 @@ nav(role='navigation')
     span
     span
     ul#menu
-        form(action="/auth/dashboard", method="post")
+        form(action="/auth/dashboard", method="get")
             li
                 input(type="submit", value="Dashboard")
-        form(action="/auth/search", method="post")
+        form(action="/auth/search", method="get")
             li
                 input(type="submit", value="Search")
-        form(action="/auth/movies", method="post")
+        form(action="/auth/movies", method="get")
             li
                 input(type="submit", value="Movies")
         form(action="/auth/logout", method="post")

@@ -4,11 +4,14 @@ html(lang="en")
         meta(charset="UTF-8")
         meta(http-equiv="X-UA-Compatible", content="IE=edge")
         meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        link(rel='icon' href='/public/assets/favicon.ico')
         script(src="https://kit.fontawesome.com/a5b1eae3e6.js" crossorigin="anonymous") 
         style
             include ../public/css/style.css
         title MovieApp
     body
+        #logo
+            img(src="../public/assets/logo.png", alt="company logo")
         form(id="signin_form" action="/login", method="post" autocomplete= "off")
             label(for="email") Email
             input(type="mail", name="email" required)
@@ -16,7 +19,8 @@ html(lang="en")
             #pass_container
                     input(type="password" name="password" id="password" required) 
                     i(id="togglePassword" class="fas fa-eye-slash")
-            input(type="submit", value="Log In") 
+            input(type="submit", value="Log In")
+            input(type="button", value="Sign in with Google" onclick="location.href='/auth/google'") 
         p#signup_message If you are not registered, do it here!
         form(id="signup_form" action="/signup", method="get") 
             input(type="submit", value="Sign Up")

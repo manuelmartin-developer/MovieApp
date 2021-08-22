@@ -1,0 +1,75 @@
+doctype html
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(http-equiv="X-UA-Compatible", content="IE=edge")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        link(rel='icon' href='/public/assets/favicon.ico')
+        style
+            include ../public/css/style.css
+            include ../public/css/menu.css
+        title Film Detail
+    body
+        include ./menuuser.pug
+        #film_details
+            p#film_detail_title=film.Title
+            if film.Poster && film.Poster !== 'N/A'
+                img(src=film.Poster, alt="film image")
+            else 
+                img(src='../public/assets/no_image.png', alt="film image")
+            table#film_detail_table
+                tr 
+                    th Year 
+                    td=film.Year || "N/A"
+                    th Released
+                    td=film.Released || "N/A"
+                tr 
+                    th Rated 
+                    td=film.Rated || "N/A"
+                    th#center(colspan="2") Director 
+                tr 
+                    th Runtime 
+                    td=film.Runtime || "N/A"
+                    td#center(colspan="2")=film.Director || "N/A"
+                tr 
+                    th#center(colspan="4") Actors
+                tr 
+                    td#center(colspan="4")=film.Actors || "N/A"
+                tr 
+                    th#center(colspan="4") Writers
+                tr 
+                    td#center(colspan="4")=film.Writer || "N/A"
+                tr 
+                    th#center(colspan="4") Production
+                tr 
+                    td#center(colspan="4")=film.Production || "N/A"
+                tr 
+                    th Language 
+                    td=film.Language || "N/A"
+                    th Country
+                    td=film.Country || "N/A"
+                tr 
+                    th#center(colspan="4") Awards
+                tr 
+                    td#center(colspan="4")=film.Awards || "N/A"
+                tr 
+                    th#center(colspan="4") Ratings
+                    if film.Ratings
+                        each rating in film.Ratings
+                            tr 
+                                td#center(colspan="2")=rating.Source
+                                td#center(colspan="2")=rating.Value
+                        tr
+                            td#center(colspan="2") Metascore
+                            td#center(colspan="2")=film.Metascore
+                        tr
+                            td#center(colspan="2") ImdbRating
+                            td#center(colspan="2")=film.imdbRating
+                        tr
+                            td#center(colspan="2") Votes
+                            td#center(colspan="2")=film.imdbVotes
+                tr 
+                    td(colspan="4")=film.Plot
+            form(action="/auth/movies", method="post")
+                input(type="hidden", name="Title" value=film.Title)
+                input(type="submit", value="Add to My Movies")

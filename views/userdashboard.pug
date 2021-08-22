@@ -4,13 +4,18 @@ html(lang="en")
         meta(charset="UTF-8")
         meta(http-equiv="X-UA-Compatible", content="IE=edge")
         meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        link(rel='icon' href='/public/assets/favicon.ico')
+        script(src="https://kit.fontawesome.com/a5b1eae3e6.js" crossorigin="anonymous") 
         style
             include ../public/css/style.css
             include ../public/css/menu.css
         title Dashboard
     body
         include ./menuuser.pug
-        table#user_details_table
-            tr 
-                th Name 
-                td=user.email
+        #container_userdashboard
+            form(action="/auth/search", method="get" autocomplete="off")
+                button(type="submit")
+                    i(class="fas fa-search")
+            form(action="/auth/movies", method="get" autocomplete="off")
+                button(type="submit")
+                    i(class="fas fa-film")

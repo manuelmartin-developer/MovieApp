@@ -4,6 +4,7 @@ html(lang="en")
         meta(charset="UTF-8")
         meta(http-equiv="X-UA-Compatible", content="IE=edge")
         meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        link(rel='icon' href='/public/assets/favicon.ico')
         script(src="https://kit.fontawesome.com/a5b1eae3e6.js" crossorigin="anonymous") 
 
         style
@@ -12,7 +13,7 @@ html(lang="en")
         title Sign Up
     body
         #container_form
-            form(id="register_form" action="/signup", method="POST" autocomplete="off")
+            form(id="register_form" action="/signup", method="POST", autocomplete="off")
                 label(for="name") Name
                 input(type="text" name="name" id="name" required) 
                 label(for="nickname") Nickname
@@ -24,6 +25,7 @@ html(lang="en")
                     input(type="password" name="password" id="password" required) 
                     i(id="togglePassword" class="fas fa-eye-slash")
                 input(type="submit", value="Register User")
+                input(type="button", value="Cancel" onclick="window.location.href='/'")
         script
             include ../utils/togglepass.js
         

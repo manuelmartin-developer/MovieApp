@@ -1,0 +1,23 @@
+doctype html
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(http-equiv="X-UA-Compatible", content="IE=edge")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        link(rel='icon' href='/public/assets/favicon.ico')
+        script(src="https://kit.fontawesome.com/a5b1eae3e6.js" crossorigin="anonymous") 
+        style
+            include ../public/css/style.css
+            include ../public/css/menu.css
+        title Are you sure?
+    body
+        include ./menuadmin.pug
+        #container_confirm
+            p Are you sure to delete the movie?
+            #confirm_buttons
+                form(method="POST", action="/auth/removeMovie?_method=DELETE")
+                    input(type="hidden", name="_id", value=movieDelete._id)
+                    button(type="submit" id="accept")
+                        i(class="fas fa-check-square")
+                button(type="button" id="reject" onclick="window.history.back()")
+                    i(class="fas fa-window-close")

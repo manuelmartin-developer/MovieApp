@@ -4,10 +4,31 @@ html(lang="en")
         meta(charset="UTF-8")
         meta(http-equiv="X-UA-Compatible", content="IE=edge")
         meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        link(rel='icon' href='/public/assets/favicon.ico')
+        script(src="https://kit.fontawesome.com/a5b1eae3e6.js" crossorigin="anonymous") 
         style
             include ../public/css/style.css
             include ../public/css/menu.css
         title Dashboard
     body
         include ./menuadmin.pug
-        p=user[0].email
+        #container_admindashboard
+            form(action="/auth/createmovie", method="get")
+                input(type="submit", value="Create Movie")
+            #list_create_movies
+                each movie in movies
+                    .one_createmovie
+                        if movie.Poster
+                            img(src=movie.Poster, alt="film image", height="50px", width="40px")
+                        else 
+                            img(src='../public/assets/no_image.png', alt="film image", height="50px", width="40px")
+                        p#create_title=movie.Title
+                        #buttons_createmovie
+                            form(method="get", action="/auth/editMovie")
+                                input(type="hidden", name="Title" value=movie.Title)
+                                button(type="submit")
+                                    i(class="fas fa-edit") 
+                            form(method="get", action="/auth/removeMovie")
+                                input(type="hidden", name="Title" value=movie.Title)
+                                button(type="submit")
+                                    i(class="fas fa-minus-square")

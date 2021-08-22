@@ -1,0 +1,36 @@
+doctype html
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(http-equiv="X-UA-Compatible", content="IE=edge")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        link(rel='icon' href='/public/assets/favicon.ico')
+        script(src="https://kit.fontawesome.com/a5b1eae3e6.js" crossorigin="anonymous") 
+        style
+            include ../public/css/style.css
+            include ../public/css/menu.css
+        title My movies
+    body
+        include ./menuuser.pug
+        #container_mymovies
+            p#amount_movies
+                    |Now are&nbsp;
+                    span=`${mymovies.length}`
+                    |&nbsp;movies in your favorites
+            #result_mymovies
+                each movie in mymovies
+                    .one_mymovie
+                        if movie.Poster && movie.Poster !== 'N/A'
+                            img(src=movie.Poster, alt="film image", height="30px", width="20px")
+                        else 
+                            img(src='../public/assets/no_image.png', alt="film image", height="30px", width="20px")
+                        p#mymovie_title=movie.Title
+                        #buttons_mymovies
+                            form(action="/auth/search", method="post")
+                                input(type="hidden", name="Title" value=movie.Title)
+                                button(type="submit")
+                                    i(class="fas fa-info-circle")
+                            form(method="POST", action="/auth/movies?_method=DELETE")
+                                input(type="hidden", name="Title" value=movie.Title)
+                                button(type="submit")
+                                    i(class="fas fa-minus-square")              
