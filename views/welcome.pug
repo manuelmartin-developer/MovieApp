@@ -11,6 +11,7 @@ html(lang="en")
         title Welcome
     body
         #message
-            p=`Welcome ${user.name}!!!`
+            if(user.name)
+                p=`Welcome ${user.name}!!!`
             form(action="/auth/dashboard", method="get")
                 input(type="submit", value="Dashboard")

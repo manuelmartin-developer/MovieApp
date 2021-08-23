@@ -3,6 +3,7 @@ const User = require('../models/users_model');
 const Movies = require('../models/movie_model');
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
+const googleauth = require('../middlewares/authgoogle');
 const generateToken = require('../middlewares/generateToken');
 const config = require("../config/auth_config");
 const db = require("../models/index_models");
@@ -125,28 +126,44 @@ const users = {
     }
   },
   signin: async (req, res) => {
-    try {
-      const user = await User.findOne({
-        email: req.body.email
-      })
-      const id = user.id
-      const email = user.email
 
-      await generateToken(res, id, email);
+    if(req.query.code){
+      try {
+        const user = req.user;
+        const id = user.id;
+        const email = user.emails[0].value;
+        await generateToken(res, id, email);
+  
+        res.status(200).render('guestdashboard');
+      } catch (error) {
+        res.status(400).json({
+          error: error.message
+        });
+      }
+    }else{
 
-      res.status(200).render('welcome', {
-        user
-      });
-
-    } catch (error) {
-      res.status(400).json({
-        error: error.message
-      });
+      try {
+        const user = await User.findOne({
+          email: req.body.email
+        })
+        const id = user.id;
+        const email = user.email;
+  
+        await generateToken(res, id, email);
+  
+        res.status(200).render('welcome', {
+          user
+        });
+  
+      } catch (error) {
+        res.status(400).json({
+          error: error.message
+        });
+      }
     }
 
   },
   dashboard: async (req, res) => {
-
     try {
       const movies = await Movies.find();
       res.status(200).render('admindashboard', {
@@ -173,8 +190,8 @@ const users = {
         } else {
           lengthMovies = Number(films[0].totalResults);
         }
-      }else{
-          films = await Movies.findOne({
+      } else {
+        films = await Movies.findOne({
           Title: title
         })
       }

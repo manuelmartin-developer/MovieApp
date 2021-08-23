@@ -1,4 +1,6 @@
 const express = require('express');
+const session = require('express-session');
+const passport = require('passport');
 const favicon = require('serve-favicon');
 require('dotenv').config();
 const cors = require("cors");
@@ -25,6 +27,19 @@ app.set('view engine', 'pug');
 app.set('views','./views');
 
 //Middlewares
+app.use(session({
+  resave: false,
+  saveUninitialized: true,
+  secret: process.env.SECRET_SESSION 
+}));
+app.use(passport.initialize());
+app.use(passport.session());
+passport.serializeUser(function(user, cb) {
+  cb(null, user);
+});
+passport.deserializeUser(function(obj, cb) {
+  cb(null, obj);
+});
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(methodOverride('_method'))
@@ -44,3 +59,5 @@ app.get('*',  (req, res) => {
 app.listen(port, () => {
     console.log(`Server listen at http://localhost:${port}`);
 });
+
+ 

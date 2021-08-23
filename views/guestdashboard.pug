@@ -1,0 +1,25 @@
+doctype html
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(http-equiv="X-UA-Compatible", content="IE=edge")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        link(rel='icon' href='/public/assets/favicon.ico')
+        script(src="https://kit.fontawesome.com/a5b1eae3e6.js" crossorigin="anonymous") 
+        style
+            include ../public/css/style.css
+            include ../public/css/menu.css
+        title Dashboard
+    body
+        include ./menuguest.pug
+        #container_userdashboard
+            #search_userdashboard
+                p Search movies
+                form(action="/auth/search", method="get" autocomplete="off")
+                    button(type="submit")
+                        i(class="fas fa-search")
+            #logout_userdashboard 
+                p Log out
+                form(action="/auth/logout", method="post")
+                    button(type="submit")
+                        i(class="fas fa-sign-out-alt")

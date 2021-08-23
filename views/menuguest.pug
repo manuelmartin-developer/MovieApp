@@ -1,0 +1,13 @@
+nav(role='navigation')
+  #menuToggle
+    input(type='checkbox')
+    span
+    span
+    span
+    ul#menu
+        form(action="/auth/search", method="get")
+            li
+                input(type="submit", value="Search")
+        form(action="/auth/logout", method="post")
+            li
+                input(type="submit", value="LogOut")

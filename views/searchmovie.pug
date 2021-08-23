@@ -16,7 +16,7 @@ html(lang="en")
             form(action="/auth/search", method="get" autocomplete="off")
                 #container_input_search
                     input(type="text", name="title")
-                    button(type="submit")
+                    button(type="submit" id="btn_search")
                             i(class="fas fa-search")
             if films && title !== undefined && lengthMovies <= 10
                 p 
@@ -93,3 +93,9 @@ html(lang="en")
         
             else if !films
                 p=notFound
+        script.
+            const btn_search = document.querySelector("#btn_search");
+            const search = document.querySelector("#container_input_search>input");
+            btn_search.addEventListener('click', () => {
+                search.classList.add('searching')
+            })
